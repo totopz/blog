@@ -1,0 +1,14 @@
+<div class="form-group{% if formData.errors.title is defined %} has-error{% endif %}">
+    <label class="form-control-label" for="title">Title</label>
+    <input type="text" class="form-control" name="title" id="title" value="{{ formData.values.title }}" placeholder="Enter post title">
+    {% if formData.errors.title is defined %}
+        <div class="help-block text-danger">{{ formData.errors.title }}</div>
+    {% endif %}
+</div>
+<div class="form-group{% if formData.errors.text is defined %} has-error{% endif %}">
+    <label class="form-control-label" for="text">Text</label>
+    <textarea id="text" name="text" rows="10" class="form-control" placeholder="Enter post content">{{ formData.values.text }}</textarea>
+    {% if formData.errors.text is defined %}
+        <div class="help-block text-danger">{{ formData.errors.text }}</div>
+    {% endif %}
+</div>

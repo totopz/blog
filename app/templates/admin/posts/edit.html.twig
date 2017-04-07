@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Edit post</h1>
+
+    <form method="post">
+        {% include 'admin/posts/_form-fields.html.twig' %}
+
+        <button type="submit" class="btn btn-primary">Update post</button>
+        <a href="{{ urlFor('admin.posts') }}" class="btn btn-default">Cancel</a>
+    </form>
+{% endblock %}

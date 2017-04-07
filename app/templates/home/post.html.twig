@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Blog Post -->
+
+    <!-- Title -->
+    <h1>{{ post.title }}</h1>
+
+    <!-- Author -->
+    <p class="lead">by {{ user.name }}</p>
+
+    <!-- Date/Time -->
+    <p><span class="glyphicon glyphicon-time"></span> Posted on  {{ post.created_at|date('F j, Y \\a\\t G:i') }}</p>
+
+    <hr>
+
+    <!-- Post Content -->
+    <p>{{ post.text|escape|nl2br|raw }}</p>
+
+    <br />
+    <a href="javascript:history.go(-1);">&lt;&lt;&lt; Back</a>
+
+    <hr>
+
+{% endblock %}

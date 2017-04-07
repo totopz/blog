@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Blog posts</h1>
+    <hr >
+
+    {% for post in posts %}
+        <!-- Blog Post -->
+
+        <!-- Title -->
+        <h2>{{ post.title }}</h2>
+
+        <!-- Author -->
+        <p class="lead">by {{ post.user_name }}</p>
+
+        <!-- Date/Time -->
+        <p><span class="glyphicon glyphicon-time"></span> Posted on  {{ post.created_at|date('F j, Y \\a\\t G:i') }}</p>
+
+        <!-- Post Content -->
+        <p>
+            {% if post.text|length > 450 %}
+                {{ post.text|escape|nl2br[:450]|raw }}...
+            {% else %}
+                {{ post.text|escape|nl2br|raw }}
+            {% endif %}
+        </p>
+
+        <a href="{{ urlFor('home.post', {'postId': post.id}) }}">Continue reading &gt;&gt;&gt;</a>
+
+        <hr>
+    {% endfor %}
+
+    <nav aria-label="...">
+        <ul class="pager">
+            {% if page < pagesCount %}
+                <li class="previous"><a href="{{ urlFor('home', {'page': page + 1}) }}"><span aria-hidden="true">&larr;</span> Older</a></li>
+            {% endif %}
+
+            {% if page > 1 %}
+                <li class="next"><a href="{{ urlFor('home', {'page': page - 1}) }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+{% endblock %}

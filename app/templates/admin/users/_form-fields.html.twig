@@ -1,0 +1,28 @@
+<div class="form-group{% if formData.errors.username is defined %} has-error{% endif %}">
+    <label class="form-control-label" for="title">Username</label>
+    <input type="text" class="form-control" name="username" id="username" value="{{ formData.values.username }}" placeholder="Enter user username">
+    {% if formData.errors.username is defined %}
+        <div class="help-block text-danger">{{ formData.errors.username }}</div>
+    {% endif %}
+</div>
+<div class="form-group{% if formData.errors.password is defined %} has-error{% endif %}">
+    <label class="form-control-label" for="title">Password</label>
+    <input type="password" class="form-control" name="password" id="password" value="{{ formData.values.password }}" placeholder="Enter user password">
+    {% if formData.errors.password is defined %}
+        <div class="help-block text-danger">{{ formData.errors.password }}</div>
+    {% endif %}
+</div>
+<div class="form-group{% if formData.errors.password2 is defined %} has-error{% endif %}">
+    <label class="form-control-label" for="title">Confirm password</label>
+    <input type="password" class="form-control" name="password2" id="password2" value="{{ formData.values.password2 }}" placeholder="Enter confirm password">
+    {% if formData.errors.password2 is defined %}
+        <div class="help-block text-danger">{{ formData.errors.password2 }}</div>
+    {% endif %}
+</div>
+<div class="form-group{% if formData.errors.name is defined %} has-error{% endif %}">
+    <label class="form-control-label" for="title">Name</label>
+    <input type="text" class="form-control" name="name" id="name" value="{{ formData.values.name }}" placeholder="Enter user name">
+    {% if formData.errors.name is defined %}
+        <div class="help-block text-danger">{{ formData.errors.name }}</div>
+    {% endif %}
+</div>

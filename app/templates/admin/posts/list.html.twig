@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Posts</h1>
+        </div>
+        <div class="col-sm-6 text-right" style="margin-top: 30px;">
+            <a href="{{ urlFor('admin.posts.add') }}" class="btn btn-success">Add new post</a>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Created At</th>
+            <th class="text-right">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if posts|length == 0 %}
+            <tr>
+                <td colspan="5">No posts yet</td>
+            </tr>
+        {% endif %}
+
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.text[:40] }}</td>
+                <td>{{ post.created_at|date('H:i d/m/Y') }}</td>
+                <td class="text-right">
+                    <a href="{{ urlFor('admin.posts.edit', {'postId': post.id}) }}" class="btn btn-success">Edit</a>
+                    <a href="{{ urlFor('admin.posts.delete', {'postId': post.id}) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
